@@ -9,6 +9,7 @@ public class UpperCaseWorkInput implements TypedWorkInput {
     }
 
     String getAName() {
-        return (String) this.workInput.getInput().get(UpperCaseWork.INPUTS.ANAME);
+        // no explicit casting, use utility converter methods on workInput
+        return this.workInput.getInputString(UpperCaseWork.INPUTS.ANAME);
     }
 }
