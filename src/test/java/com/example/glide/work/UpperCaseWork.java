@@ -1,5 +1,7 @@
 package com.example.glide.work;
 
+import java.util.Map;
+
 public class UpperCaseWork extends AbstractWork {
 
     public static class OUTPUTS {
@@ -14,16 +16,17 @@ public class UpperCaseWork extends AbstractWork {
 
     @Override
     protected WorkOutput doApply(WorkInput workInput) {
-        // Typesafe accessor for inputs
-        UpperCaseWorkInput upperCaseWorkInput = getUpperCaseWorkInput(workInput);
+        // Access to input using a key name
+        String aname =  (String) workInput.getInput().get(INPUTS.ANAME);
 
         // Do the work
-        String upperName = upperCaseWorkInput.getAName().toUpperCase();
+        String upperName = aname.toUpperCase();
 
-        // Typesafe accessor for outputs
-        upperCaseWorkOutput.setUpperName(upperName);
+        // Create the WorkOutput with a key name
+        WorkOutput workOutput = new WorkOutput(Map.of(OUTPUTS.UPPER_NAME, upperName));
 
-        return upperCaseWorkOutput.getWorkOutput();
+        // Return the output
+        return workOutput;
 
     }
 

@@ -2,33 +2,25 @@ package com.example.glide.work;
 
 public class UpperCaseTypedWork extends AbstractTypedWork<UpperCaseWorkInput, UpperCaseWorkOutput> {
 
-    public UpperCaseTypedWork(Class<UpperCaseWorkInput> inputClass) {
-        super(inputClass);
+    public UpperCaseTypedWork(Class<UpperCaseWorkInput> inputClass, Class<UpperCaseWorkOutput> outputClass) {
+        super(inputClass, outputClass);
     }
 
     @Override
     protected UpperCaseWorkOutput doWork(UpperCaseWorkInput upperCaseWorkInput) {
-       // Do the work
-       String upperName = upperCaseWorkInput.getAName().toUpperCase();
+       // Access the input in a type safe-ish way
+       String aname = upperCaseWorkInput.getAName();
 
-       // Prepare the output
-       var upperCaseWorkOutput = createTypedWorkOutput();
+       // Do the work
+       String upperName = aname.toUpperCase();
+
+       // Create the output in a type safe way
+       var upperCaseWorkOutput = createWorkOutput();
        upperCaseWorkOutput.setUpperName(upperName);
 
        // Return the output
        return upperCaseWorkOutput;
     }
-
-    @Override
-    protected UpperCaseWorkInput createTypedWorkInput(WorkInput workInput) {
-        return new UpperCaseWorkInput(workInput);
-    }
-
-    @Override
-    protected UpperCaseWorkOutput createTypedWorkOutput() {
-        return new UpperCaseWorkOutput();
-    }
-
 
     @Override
     public WorkDescription getDescription() {

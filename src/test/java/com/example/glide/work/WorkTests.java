@@ -25,7 +25,7 @@ public class WorkTests {
         WorkInput workInput = new WorkInput(Map.of(UpperCaseWork.INPUTS.ANAME, "joe"));
 
         // Create work unit typed
-        UpperCaseTypedWork upperTypedCaseWork = new UpperCaseTypedWork(UpperCaseWorkInput.class);
+        UpperCaseTypedWork upperTypedCaseWork = new UpperCaseTypedWork(UpperCaseWorkInput.class, UpperCaseWorkOutput.class);
 
         // Invoke
         UpperCaseWorkOutput upperCaseWorkOutput = upperTypedCaseWork.doWork(new UpperCaseWorkInput(workInput));

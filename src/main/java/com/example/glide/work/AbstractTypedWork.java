@@ -6,12 +6,16 @@ public abstract class AbstractTypedWork<IT extends TypedWorkInput, OT extends Ty
 
     private Class<IT> inputClass;
 
-    public AbstractTypedWork(Class<IT> inputClass) {
+    private Class<OT> outputClass;
+
+    public AbstractTypedWork(Class<IT> inputClass, Class<OT> outputClass) {
         this.inputClass = inputClass;
+        this.outputClass = outputClass;
     }
 
+
     @SuppressWarnings("unchecked")
-    protected IT createTypedWorkInput(WorkInput workInput) {
+    protected IT createWorkInput(WorkInput workInput) {
         try {
             Class<IT> inputClass = this.inputClass;
             Constructor<IT> constructor = inputClass.getDeclaredConstructor(WorkInput.class);
@@ -21,11 +25,20 @@ public abstract class AbstractTypedWork<IT extends TypedWorkInput, OT extends Ty
             throw new RuntimeException("Failed to create TypedWorkInput instance.", e);
         }
     }
-    protected abstract OT createTypedWorkOutput();
+    protected OT createWorkOutput() {
+        try {
+            Class<OT> outputClass = this.outputClass;
+            Constructor<OT> constructor = outputClass.getConstructor();
+            constructor.setAccessible(true);
+            return constructor.newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create TypedWorkOutput instance.", e);
+        }
+    }
 
     @Override
     protected WorkOutput doApply(WorkInput workInput) {
-        IT typedWorkInput = createTypedWorkInput(workInput);
+        IT typedWorkInput = createWorkInput(workInput);
         return doWork(typedWorkInput).getWorkOutput();
     }
 
