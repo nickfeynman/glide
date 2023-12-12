@@ -7,7 +7,7 @@ public class UpperCaseTypedWork extends AbstractTypedWork<UpperCaseWorkInput, Up
     }
 
     @Override
-    protected UpperCaseWorkOutput doTypedApply(UpperCaseWorkInput upperCaseWorkInput) {
+    protected UpperCaseWorkOutput doWork(UpperCaseWorkInput upperCaseWorkInput) {
        // Do the work
        String upperName = upperCaseWorkInput.getAName().toUpperCase();
 

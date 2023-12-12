@@ -28,7 +28,7 @@ public class WorkTests {
         UpperCaseTypedWork upperTypedCaseWork = new UpperCaseTypedWork(UpperCaseWorkInput.class);
 
         // Invoke
-        UpperCaseWorkOutput upperCaseWorkOutput = upperTypedCaseWork.doTypedApply(new UpperCaseWorkInput(workInput));
+        UpperCaseWorkOutput upperCaseWorkOutput = upperTypedCaseWork.doWork(new UpperCaseWorkInput(workInput));
 
         // Print
         System.out.println(upperCaseWorkOutput.getUpperName());

@@ -26,8 +26,8 @@ public abstract class AbstractTypedWork<IT extends TypedWorkInput, OT extends Ty
     @Override
     protected WorkOutput doApply(WorkInput workInput) {
         IT typedWorkInput = createTypedWorkInput(workInput);
-        return doTypedApply(typedWorkInput).getWorkOutput();
+        return doWork(typedWorkInput).getWorkOutput();
     }
 
-    protected abstract OT doTypedApply(IT typedWorkInput);
+    protected abstract OT doWork(IT typedWorkInput);
 }
