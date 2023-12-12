@@ -33,6 +33,7 @@ public class WorkOutputDescription {
     public Class getType() {
         return type;
     }
+
     public boolean isOptional() {
         return optional;
     }

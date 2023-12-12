@@ -15,9 +15,9 @@ import java.util.Map;
 
 public class WorkInput {
 
-    private Map<String, Object> input;
+    private final Map<String, Object> input;
 
-    private ConfigurableConversionService configurableConversionService = new DefaultFormattingConversionService();
+    private final ConfigurableConversionService configurableConversionService = new DefaultFormattingConversionService();
 
     public WorkInput(Map<String, Object> input) {
         this.input = input;
@@ -82,7 +82,7 @@ public class WorkInput {
     }
 
     public Date getDate(String name) {
-        return  convert(getInputString(name), Date.class);
+        return convert(getInputString(name), Date.class);
     }
 
     public Date getDateWithPattern(String name, String pattern) {
@@ -99,14 +99,8 @@ public class WorkInput {
         Object rawValue = getInput().get(name);
         if (rawValue != null) {
             String value = convert(rawValue, String.class);
-            if (value != null) {
-                return value;
-            }
-            else {
-                return null;
-            }
-        }
-        else {
+            return value;
+        } else {
             return null;
         }
     }
@@ -120,7 +114,7 @@ public class WorkInput {
 
         private final static String DEFAULT_DATE_PATTERN = "yyyy-MM-dd";
 
-        private DateFormat dateFormat;
+        private final DateFormat dateFormat;
 
         public StringToDateConverter() {
             this.dateFormat = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
@@ -141,13 +135,11 @@ public class WorkInput {
         public Date convert(String source) {
             try {
                 return dateFormat.parse(source);
-            }
-            catch (ParseException e) {
+            } catch (ParseException e) {
                 String pattern;
                 if (dateFormat instanceof SimpleDateFormat) {
                     pattern = ((SimpleDateFormat) dateFormat).toPattern();
-                }
-                else {
+                } else {
                     pattern = dateFormat.toString();
                 }
                 throw new IllegalArgumentException(e.getMessage() + ", format: [" + pattern + "]");

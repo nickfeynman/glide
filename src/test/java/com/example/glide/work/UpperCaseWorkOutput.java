@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class UpperCaseWorkOutput implements TypedWorkOutput {
 
-    private WorkOutput workOutput = new WorkOutput(new HashMap<>());
+    private final WorkOutput workOutput = new WorkOutput(new HashMap<>());
 
     public void setUpperName(String upperName) {
         this.workOutput.getOutput().put(UpperCaseWork.OUTPUTS.UPPER_NAME, upperName);

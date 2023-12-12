@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class WorkOutput {
 
-    private Map<String, Object> output;
+    private final Map<String, Object> output;
 
     public WorkOutput() {
         this.output = new HashMap<>();

@@ -8,18 +8,18 @@ public class UpperCaseTypedWork extends AbstractTypedWork<UpperCaseWorkInput, Up
 
     @Override
     protected UpperCaseWorkOutput doWork(UpperCaseWorkInput upperCaseWorkInput) {
-       // Access the input in a type safe-ish way
-       String aname = upperCaseWorkInput.getAName();
+        // Access the input in a type safe-ish way
+        String aname = upperCaseWorkInput.getAName();
 
-       // Do the work
-       String upperName = aname.toUpperCase();
+        // Do the work
+        String upperName = aname.toUpperCase();
 
-       // Create the output in a type safe way
-       var upperCaseWorkOutput = createWorkOutput();
-       upperCaseWorkOutput.setUpperName(upperName);
+        // Create the output in a type safe way
+        var upperCaseWorkOutput = createWorkOutput();
+        upperCaseWorkOutput.setUpperName(upperName);
 
-       // Return the output
-       return upperCaseWorkOutput;
+        // Return the output
+        return upperCaseWorkOutput;
     }
 
     @Override

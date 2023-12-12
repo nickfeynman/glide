@@ -9,7 +9,7 @@ public class WorkInputDescription {
     private final String longDescription;
     private final boolean optional;
 
-    private Object defaultValue;
+    private final Object defaultValue;
     private final Class type;
 
     public WorkInputDescription(String name, String shortDescription, String longDescription, Class type, boolean optional, Object defaultValue) {

@@ -4,20 +4,18 @@ import java.util.Map;
 
 public class UpperCaseWork extends AbstractWork {
 
-    public static class OUTPUTS {
-        public static final String UPPER_NAME = "upperName";
-    }
-
     public static class INPUTS {
         public static final String ANAME = "aname";
     }
 
-    private UpperCaseWorkOutput upperCaseWorkOutput = new UpperCaseWorkOutput();
+    public static class OUTPUTS {
+        public static final String UPPER_NAME = "upperName";
+    }
 
     @Override
     protected WorkOutput doApply(WorkInput workInput) {
         // Access to input using a key name
-        String aname =  (String) workInput.getInput().get(INPUTS.ANAME);
+        String aname = (String) workInput.getInput().get(INPUTS.ANAME);
 
         // Do the work
         String upperName = aname.toUpperCase();
@@ -28,11 +26,6 @@ public class UpperCaseWork extends AbstractWork {
         // Return the output
         return workOutput;
 
-    }
-
-    private static UpperCaseWorkInput getUpperCaseWorkInput(WorkInput workInput) {
-        UpperCaseWorkInput upperCaseWorkInput = new UpperCaseWorkInput(workInput);
-        return upperCaseWorkInput;
     }
 
     @Override

@@ -4,9 +4,9 @@ import java.lang.reflect.Constructor;
 
 public abstract class AbstractTypedWork<IT extends TypedWorkInput, OT extends TypedWorkOutput> extends AbstractWork {
 
-    private Class<IT> inputClass;
+    private final Class<IT> inputClass;
 
-    private Class<OT> outputClass;
+    private final Class<OT> outputClass;
 
     public AbstractTypedWork(Class<IT> inputClass, Class<OT> outputClass) {
         this.inputClass = inputClass;
@@ -25,6 +25,7 @@ public abstract class AbstractTypedWork<IT extends TypedWorkInput, OT extends Ty
             throw new RuntimeException("Failed to create TypedWorkInput instance.", e);
         }
     }
+
     protected OT createWorkOutput() {
         try {
             Class<OT> outputClass = this.outputClass;

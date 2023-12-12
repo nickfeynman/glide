@@ -58,8 +58,8 @@ public class WorkDescription {
         private String shortDescription;
         private String longDescription;
         private String name;
-        private List<WorkInputDescription> inputDescriptions = new ArrayList<>();
-        private List<WorkOutputDescription> outputDescriptions = new ArrayList<>();
+        private final List<WorkInputDescription> inputDescriptions = new ArrayList<>();
+        private final List<WorkOutputDescription> outputDescriptions = new ArrayList<>();
 
 
         public Builder shortDescription(String shortDescription) {

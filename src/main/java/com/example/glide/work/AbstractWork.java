@@ -47,6 +47,7 @@ public abstract class AbstractWork implements Work {
                 .map(WorkInputDescription::getName)
                 .collect(Collectors.toList());
     }
+
     private List<String> getOutputNames() {
         return getDescription().getOutputDescriptions().stream()
                 .map(WorkOutputDescription::getName)
